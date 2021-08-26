@@ -48,8 +48,8 @@ export default function Register() {
       <form className="registerForm" onSubmit={handleSubmit}>
           <div>
             <label htmlFor="fileInput">
+              <div style={{display:"grid",placeItems:"center"}}><i className="fas fa-user-edit fa-3x"></i></div>
               Upload Profile Image
-              <i className="fas fa-user-edit"></i>
             </label>
             <input
               type="file"
