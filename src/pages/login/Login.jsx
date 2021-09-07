@@ -36,7 +36,7 @@ export default function Login() {
       })
       const res = await api.post("/auth/login", {
         username: 'User1',
-        password: '12345',
+        password: '1234',
       });
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
