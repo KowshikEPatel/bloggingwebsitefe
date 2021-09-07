@@ -27,6 +27,24 @@ export default function Login() {
     }
   };
 
+  const handletclogin = async(e)=>{
+    e.preventDefault();
+    dispatch({ type: "LOGIN_START" });
+    try {
+      const api = axios.create({
+        baseURL:'https://kp-blogpostapp.herokuapp.com/'
+      })
+      const res = await api.post("/auth/login", {
+        username: 'User1',
+        password: '12345',
+      });
+      dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
+    } catch (err) {
+      setMessage("Wrong credentials!")
+      dispatch({ type: "LOGIN_FAILURE" });
+    }
+  }
+
   return (
     <div className="login">
       <span className="loginTitle">Login</span>
@@ -48,6 +66,9 @@ export default function Login() {
         <div>{message}</div>
         <button className="loginButton" type="submit" disabled={isFetching}>
           Login
+        </button>
+        <button className="loginButton" onClick={handletclogin} disabled={isFetching}>
+          Login with test credentials
         </button>
       </form>
       <button className="loginRegisterButton">
